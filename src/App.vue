@@ -33,6 +33,10 @@ const logOut = ()=>{
   router.push('/')
 }
 
+router.beforeEach((to, from, next) => {
+  if (to.name !== 'feed' && !loggedIn) next({ name: 'login' })
+  else next()
+})
 </script>
 
 <style>

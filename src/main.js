@@ -5,7 +5,6 @@ import {router} from './router'
 import {store} from './store'
 import {initializeApp} from "firebase/app"
 import {getFirestore} from "firebase/firestore"
-import { getAuth, signOut, onAuthStateChanged } from '@firebase/auth'
 
 const firebaseConfig = {
   apiKey: "AIzaSyCqBTxOJHaPP-AH5PKJHShNyAm1S2RSHUY",
@@ -18,18 +17,10 @@ const firebaseConfig = {
 
 const firebaseapp = initializeApp(firebaseConfig)
 const db = getFirestore(firebaseapp)
-export { db, firebaseapp }
+export { db }
 const app = createApp(App)
 
-
-const auth = getAuth(firebaseapp)
-const isAuthenticated = auth.currentUser
 
 app.use(store)
 app.use(router)
 app.mount('#app')
-
-router.beforeEach((to, from, next) => {
-  if (to.name !== 'feed' && !isAuthenticated) next({ name: 'login' })
-  else next()
-})
