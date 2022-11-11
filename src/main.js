@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { ref, createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
 import {router} from './router'
@@ -17,7 +17,7 @@ const firebaseConfig = {
 
 const firebaseapp = initializeApp(firebaseConfig)
 const db = getFirestore(firebaseapp)
-export { db }
+export { db, firebaseapp }
 const app = createApp(App)
 
 

@@ -51,7 +51,7 @@
                     this.error = 'Check time and duration!'+this.duration    
                 } else{
                     this.$store.commit('editDone', [this.start, this.end])
-                    this.$router.push('/')
+                    this.$router.push('/feed')
                 }
             }
         }
