@@ -1,35 +1,13 @@
 import { createStore } from 'vuex'
-import { reactive, computed } from 'vue'
+import { ref, reactive, computed } from 'vue'
+import { addDoc, collection, deleteDoc, doc, updateDoc } from 'firebase/firestore'
+import { db } from './main'
 
 
 export const store = createStore({
   state() {
     return {
-      posts: [
-        {
-          id: 1,
-          title: 'Learning Vue.js',
-          content: 'Learn Vue using this guide.',
-          video: reactive({videos:[]})
-        },{
-          id: 2,
-          title: 'Learning Vuex',
-          content: 'This is a post',
-          video: ""},{
-          id: 3,
-          title: 'Learning Vue-router',
-          content: 'This is a post',
-          video: ""},{
-          id: 4,
-          title: 'Vue Composition API',
-          content: 'This is a post',
-          video: ""},{
-          id: 5,
-          title: 'Firebase guide',
-          content: 'This is a post',
-          video: ""}
-        
-      ],
+      posts: [],
       currentEdit: null
     }
   },
@@ -39,40 +17,64 @@ export const store = createStore({
       if(!state.currentEdit) {
         return state.posts
       }
-      return state.posts.filter(post => post.id!=currentEdit)
+      return state.posts.filter(post => post.id!=state.currentEdit)
     })
   },
   },
   mutations: {
     
-  addPost(state, post){
-    let idmax = 0
+  async addPost(state, post){
     if (post.id) {
       const index = state.posts.findIndex(x => x.id == post.id )
       if (index > -1){
-        state.posts.splice(index, 1)
+        state.posts.splice(index, 1)  
+        deleteDoc(doc(db, "Blogs", post.id))
       }
     }
-    state.posts.forEach((x) => {if (x.id>idmax) {idmax=x.id}})
-    state.posts.push({
-      id: post.id? post.id : idmax+1,
-      date: post.date, 
-      title: post.title, 
-      content: post.content,
-      video: post.video
-    })
-    state.currentEdit = post.id? post.id : idmax+1
+    const uid = ref('')
+      try {
+          const docRef = await addDoc(collection(db, "Blogs"), {
+            date: post.date, 
+            title: post.title, 
+            content: post.content,
+            video: post.video
+          })
+      uid.value = docRef.id
+      } catch (e) {
+      console.error("Error adding document: ", e);
+      }
+
   },
   deletePost(state, id){
     const index = state.posts.findIndex(x => x.id == id )
     if (index > -1){
       state.posts.splice(index, 1)
+      deleteDoc(doc(db, "Blogs", id))
     }
+  },
+  setEdit(state, id){
+    state.currentEdit = id
+  },
+  updateState(state, post){
+    const index = state.posts.findIndex(x => x.id == post.id )
+    if (index > -1){
+      state.posts.splice(index, 1)
+    }
+    state.posts.push({
+      id: post.id,
+      date: post.date, 
+      title: post.title, 
+      content: post.content,
+      video: post.video
+    })
   },
   editDone(state, time){
     const index = state.posts.findIndex(x => x.id == state.currentEdit )
       if (index > -1){
         state.posts[index].time = time
+        updateDoc(doc(db, "Blogs", state.currentEdit), {
+          time: time
+        })
       }
     state.currentEdit = null
   }

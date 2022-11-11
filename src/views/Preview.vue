@@ -38,7 +38,7 @@ export default{
                 title.value = post[0].title
                 date.value = post[0].date? post[0].date: ''
                 content.value = post[0].content
-                video.videos = post[0].video.videos
+                video.videos = post[0].video? post[0].video.videos: []
                 time.value = post[0].time? post[0].time[0]: 0
             }
         }

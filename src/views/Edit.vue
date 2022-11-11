@@ -5,7 +5,7 @@
             <source :src="video.videos[0]" type="video/mp4" />
         </video>
         <h2 v-show="!video.videos.length">No video, please confirm posting!</h2>
-        <p>Full lenght: {{ duration }}</p> 
+        <p v-show="video.videos.length">Full lenght: {{ duration }}</p> 
         <span v-show="video.videos.length">
         <p>Start time: 
         <input type="text" name="start" v-model="start"/></p>
@@ -24,11 +24,7 @@
         },
         data(){
             return{
-                start: 0,
-                end: 0,
-                duration: 0,
-                error: '',
-                vid: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+                
             }
         },
         computed:{
@@ -37,7 +33,7 @@
             const id = this.$store.state.currentEdit
             const post = this.$store.state.posts.filter((p)=>p.id && id && p.id==id)
             if (post[0]) return {
-                videos : post[0].video.videos
+                videos : post[0].video?post[0].video.videos:[]
                 }
             return {videos: ['']}
             }

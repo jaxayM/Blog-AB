@@ -17,13 +17,20 @@
             const Content = ref('')
             const video = reactive({videos: []})
             const more = ref(0)
-            const publish = (evt) => {
+            const uid = ref(0)
+
+            const publish = async (evt) => {
                 evt.preventDefault()
                 if (Title.value){
                     const now = new Date()
                     const date = now.getFullYear() + '-' + (now.getMonth()+1) + '-' + now.getDate()                
+                    
                     store.commit('addPost', {id: route.query.id? route.query.id: 0, date: date, title: Title.value, content: Content.value, video: video})
-                    router.push('/edit-video')
+                    
+                    if(!route.query.id){
+                        store.commit("setEdit", route.query.id)
+                        router.push('/edit-video')
+                    } else router.push('/feed')
                 } else validTitle.value = 'Title field required'
                 
             }
@@ -32,6 +39,7 @@
                 video.videos.push(v)
             
             }
+            
         }
 
             onMounted(() => {
