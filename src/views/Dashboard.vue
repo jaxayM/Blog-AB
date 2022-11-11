@@ -1,7 +1,6 @@
 <template>
   <router-link :to="$store.state.currentEdit?'/edit-video':'/new-blog'"><button>Create</button></router-link>
   <h1>Blogs</h1>
-  {{loggedIn}}
   <div class="bloglist">
     <post v-for="post in filteredPosts">
       <template v-slot:title>{{post.title}}</template>
