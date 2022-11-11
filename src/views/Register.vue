@@ -35,9 +35,9 @@
           }
           user.displayName = profile.username
           user.phoneNumber = profile.number
-          verificationPrams = {}
-          sendEmailVerification (user)
+          const verificationPrams = {}
           router.push('/feed')
+          sendEmailVerification (user)
       })
       .catch((error) => {
         console.log(error.code)
