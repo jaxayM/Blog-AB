@@ -45,7 +45,7 @@ export default{
         const deletePost = () => {
             if (Delete.value=='Confirm'){
                 store.commit('deletePost', route.params.id)
-                router.push('/')
+                router.push('/feed')
             } else Delete.value = 'Confirm'
         }
         const updatePost = () => {
