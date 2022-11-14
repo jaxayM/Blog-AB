@@ -15,7 +15,7 @@
 import { onMounted } from 'vue'
 import { useStore } from 'vuex' 
 import { useRoute, useRouter } from 'vue-router'
-import {ref, reactive, watch} from 'vue' 
+import {ref, reactive } from 'vue' 
 
 export default{
     components:{
@@ -75,6 +75,6 @@ export default{
 .content{
     white-space: pre-wrap;
     text-align: left;
-    padding: 0 15em;
+    padding: 0 2em;
 }
 </style>

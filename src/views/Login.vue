@@ -3,6 +3,7 @@
     <p><input type="text" placeholder="Email" v-model="email" /></p>
     <p><input type="password" placeholder="Password" v-model="password" /></p>
     <p><button @click="signIn">Submit</button></p>
+    <p style="text-decoration: none">Don't have an account? <router-link to="/register">Sign up!</router-link></p>
     {{errMsg}}
   </template>
   <script setup>
@@ -18,7 +19,6 @@
         const auth = getAuth()
         signInWithEmailAndPassword(auth, email.value, password.value)
         .then((data) => {
-            console.log('Successfully logged in!');
             router.push('/feed')
         })
         .catch((error) => {
@@ -37,6 +37,6 @@
                 errMsg.value = 'Email or password was incorrect'
                 break
             }
-      });
+      })
   }
   </script>

@@ -1,9 +1,7 @@
 <template>
     <form>
         <h1>Publish blog confirmation</h1>
-        <video v-show="video.videos.length" @loadedmetadata="logDuration" controls ref="videoPlayer">
-            <source :src="video.videos[0]" type="video/mp4" />
-        </video>
+        <video v-show="video.videos.length" :src="video.videos" @loadedmetadata="logDuration" controls ref="videoPlayer"/>
         <h2 v-show="!video.videos.length">No video, please confirm posting!</h2>
         <p v-show="video.videos.length">Full lenght: {{ duration }}</p> 
         <span v-show="video.videos.length">
@@ -24,7 +22,10 @@
         },
         data(){
             return{
-                
+                start: 0,
+                end: 0,
+                duration: 0,
+                error: '',
             }
         },
         computed:{
@@ -35,7 +36,7 @@
             if (post[0]) return {
                 videos : post[0].video?post[0].video.videos:[]
                 }
-            return {videos: ['']}
+            return {videos: []}
             }
         }
         ,

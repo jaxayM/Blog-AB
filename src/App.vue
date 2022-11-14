@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import {ref, watchEffect, computed} from 'vue'
+import {ref} from 'vue'
 import { getAuth, signOut, onAuthStateChanged } from '@firebase/auth'
 import { useRouter } from 'vue-router'
 

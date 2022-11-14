@@ -9,12 +9,12 @@ import Preview from './views/Preview.vue'
 
 const routes = [
     { path: "/", component: Home },
-    { path: "/feed", component: Dashboard},
+    { path: "/feed", component: Dashboard, name: "feed"},
     { path: "/home/", component: Home },
     { path: "/login/", component: Login },
     { path: "/register/", component: Register },
     { path: "/new-blog", component: Create },
-    { path: "/edit-video", component: Edit },
+    { path: "/edit-video", component: Edit, name: "edit" },
     { path: "/view-post/", component: Preview },
     { path: "/view-post/:id", component: Preview },
   ]

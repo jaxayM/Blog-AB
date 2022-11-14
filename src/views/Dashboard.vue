@@ -15,7 +15,7 @@ import {ref, computed, onMounted, watchEffect} from 'vue'
 import {useStore} from 'vuex'
 import Post from '../components/Post.vue'
 import { db, firebaseapp } from '../main'
-import { getAuth, signOut, onAuthStateChanged } from '@firebase/auth'
+import { getAuth, onAuthStateChanged } from '@firebase/auth'
 import { useRouter } from 'vue-router'
 
 export default{
@@ -49,7 +49,7 @@ export default{
             const querySnapshot = await getDocs(collection(db, "Blogs"));
             querySnapshot.forEach((doc) => {
             const data = doc.data()
-            store.commit('updateState', {id: doc.id, date: data.date, title: data.title, content: data.content, video: data.video})
+            store.commit('updateState', {id: doc.id, date: data.date, title: data.title, content: data.content, video: data.video, userId: data.userId})
             })
         })
       return {
@@ -71,8 +71,6 @@ a{
 
 .bloglist::-webkit-scrollbar-button {
   width: 50px;
-  /* color: ; */
-  /* display: ; */
 }
 
 .bloglist{

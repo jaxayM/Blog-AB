@@ -1,4 +1,11 @@
 <template>
     <h1>Create your Blogs freely </h1>
-    <p>Start now creating your own blogs.</p>
+    <p>
+        <RouterLink  style="
+            text-align: center;
+            width: 100%;
+        " to="/feed">
+            Start now creating your own blogs.
+        </RouterLink>
+    </p>
 </template>

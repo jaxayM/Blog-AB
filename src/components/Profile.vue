@@ -1,23 +1,9 @@
 <script setup>
 
-import { collection, onSnapshot } from "@firebase/firestore"
-import { onMounted, ref } from "vue"
-import { db } from "../main"
+import { ref } from "vue"
 
     const emit = defineEmits(['sendRegistration'])
 
-        const posts = ref([])
-        onMounted(()=>{
-            // onSnapshot(collection(db, 'Blogs'), (querySnapshot) =>{
-            //     const blogs = []
-            //     querySnapshot.forEach((doc)=>{
-            //         const blog = doc.data()
-            //         posts.push(blog)
-            //     })
-            //     posts.value = blogs
-            // })
-        })
-    
     const src = ref()
     const profile = ref()
     const username = ref('')

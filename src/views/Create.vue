@@ -28,7 +28,6 @@
                     store.commit('addPost', {id: route.query.id? route.query.id: 0, date: date, title: Title.value, content: Content.value, video: video})
                     
                     if(!route.query.id){
-                        store.commit("setEdit", route.query.id)
                         router.push('/edit-video')
                     } else router.push('/feed')
                 } else validTitle.value = 'Title field required'

@@ -7,13 +7,14 @@
     <Profile @send-registration="register" v-show="forward"/>
     <p><button v-if="forward" @click="forward=false">Back</button>
     <button v-else @click="forward=true">Register</button></p>
+    <p style="text-decoration: none;">Already have an account? <router-link to="/login">Login!</router-link></p>
   </template>
   <script setup>
     import { ref } from 'vue'
-    import { useRouter } from 'vue-router';
+    import { useRouter } from 'vue-router'
     import {getAuth, createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
     import Profile from '../components/Profile.vue'
-    import { getStorage, ref as sRef, uploadString, getDownloadURL } from "firebase/storage";
+    import { getStorage, ref as sRef, uploadString, getDownloadURL } from "firebase/storage"
 
     const forward = ref(false)
     const email = ref('')
@@ -35,7 +36,6 @@
           }
           user.displayName = profile.username
           user.phoneNumber = profile.number
-          const verificationPrams = {}
           router.push('/feed')
           sendEmailVerification (user)
       })
