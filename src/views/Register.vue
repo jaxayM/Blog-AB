@@ -37,7 +37,7 @@
           user.displayName = profile.username
           user.phoneNumber = profile.number
           router.push('/feed')
-          sendEmailVerification (user)
+          sendEmailVerification (auth.currentUser)
       })
       .catch((error) => {
         console.log(error.code)
