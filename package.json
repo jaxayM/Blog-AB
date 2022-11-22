@@ -2,8 +2,8 @@
   "name": "microblog",
   "private": false,
   "version": "0.0.0",
-  "homepage": "https://jaxaym.github.io/Blog-AB/",
   "type": "module",
+  "homepage": "https://jaxayM.github.io/Blog-AB/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
