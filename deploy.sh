@@ -8,5 +8,5 @@ cp index.html 404.html
 git init
 git add -A
 git commit -m 'deploy'
-git push -f git@github.com:jaxayM/Blog-AB.git master:gh-pages
+git push -f git@github.com:jaxayM/jaxayM.github.io.git main
 cd -
