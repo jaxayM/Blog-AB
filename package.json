@@ -3,7 +3,7 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://jaxaym.github.io/",
+  "homepage": "https://jaxaym.github.io/Blog-AB/",
   "BrowserRouter": "HasRouter",
   "scripts": {
     "dev": "vite",
