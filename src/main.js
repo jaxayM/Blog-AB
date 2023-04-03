@@ -1,10 +1,11 @@
-import { ref, createApp } from 'vue'
+// import { ref, createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import {router} from './router'
+import {routes} from './router'
 import {store} from './store'
 import {initializeApp} from "firebase/app"
 import {getFirestore} from "firebase/firestore"
+import { ViteSSG } from 'vite-ssg'
 
 const firebaseConfig = {
   apiKey: "AIzaSyCqBTxOJHaPP-AH5PKJHShNyAm1S2RSHUY",
@@ -18,9 +19,30 @@ const firebaseConfig = {
 const firebaseapp = initializeApp(firebaseConfig)
 const db = getFirestore(firebaseapp)
 export { db, firebaseapp }
-const app = createApp(App)
+// const app = createApp(App)
 
+// `export const createApp` is required instead of the original `createApp(App).mount('#app')`
+export const createApp = ViteSSG(
+  // the root component
+  App,
+  // vue-router options
+  { routes, base: "dist" },
+  // function to have custom setups
+  ({ app, router, routes, isClient, initialState }) => {
+    app.use(store)
+    if (import.meta.env.SSR)
+      {initialState.store = store.state}
+    else
+      {store.replaceState(initialState.store)}
+    router.beforeEach((to, from, next) => {
+      // perform the (user-implemented) store action to fill the store's state
+      if (!store.getters.ready)
+        {store.dispatch('initialize')}
+      next()
+    })
+  },
+)
 
-app.use(store)
-app.use(router)
-app.mount('#app')
+// app.use(store)
+// app.use(router)
+// app.mount('#app')
