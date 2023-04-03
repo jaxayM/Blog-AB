@@ -7,7 +7,7 @@
     <Profile @send-registration="register" v-show="forward"/>
     <p><button v-if="forward" @click="forward=false">Back</button>
     <button v-else @click="forward=true">Register</button></p>
-    <p style="text-decoration: none;">Already have an account? <router-link to="/Blog-AB/login">Login!</router-link></p>
+    <p style="text-decoration: none;">Already have an account? <router-link to="/login">Login!</router-link></p>
   </template>
   <script setup>
     import { ref } from 'vue'
@@ -36,7 +36,7 @@
           }
           user.displayName = profile.username
           user.phoneNumber = profile.number
-          router.push('/Blog-AB/feed')
+          router.push('/feed')
           sendEmailVerification (auth.currentUser)
       })
       .catch((error) => {

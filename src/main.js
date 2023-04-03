@@ -26,7 +26,7 @@ export const createApp = ViteSSG(
   // the root component
   App,
   // vue-router options
-  { routes, base: "dist" },
+  { routes, base: "Blog-AB" },
   // function to have custom setups
   ({ app, router, routes, isClient, initialState }) => {
     app.use(store)

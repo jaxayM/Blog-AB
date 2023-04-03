@@ -5,7 +5,7 @@
         <div class="info">
             <h1 style="width: max-content">Create your Blogs freely </h1>
             <p>
-                <RouterLink class="center" to="/Blog-AB/feed">
+                <RouterLink class="center" to="/feed">
                     Start now creating your own blogs.
                 </RouterLink>
             </p>
@@ -16,7 +16,7 @@
         <div v-for="article in articles" class="articles">
             <h3>{{ article.attributes.Title }}</h3>
             <p> <span class="first-letter">{{ article.attributes.Description[0] }}</span> {{ article.attributes.Description.split('\n')[0] }}</p>
-            <router-link class="link" :to="`/Blog-AB/${article.id}-${article.attributes.Title.replace(/:|!|'|\?|,/g, '').replace(/\s+/g, '-').toLowerCase()}`" >View Blog Post</router-link>
+            <router-link class="link" :to="`/${article.id}-${article.attributes.Title.replace(/:|!|'|\?|,/g, '').replace(/\s+/g, '-').toLowerCase()}`" >View Blog Post</router-link>
             <!-- <p v-html="article.attributes.Description"></p> -->
         </div>
     </main>

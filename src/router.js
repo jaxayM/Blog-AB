@@ -8,7 +8,7 @@ import Edit from './views/Edit.vue'
 import Preview from './views/Preview.vue'
 import Blogpost from './views/Blogpost.vue'
 
-const baseURL = '/Blog-AB'
+const baseURL = ''
 export const routes = [
     { path: `${baseURL}/`, component: Home },
     { path: `${baseURL}/feed`, component: Dashboard, name: "feed"},

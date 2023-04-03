@@ -16,7 +16,7 @@ export default defineConfig({
       // use original route records
       return routes.filter(i => i.name !== 'viewpost').flatMap((route) => {
         return route.name === 'blogpost'
-          ? myBlogSlugs.map(slug => `/Blog-AB/${slug}`)
+          ? myBlogSlugs.map(slug => `/${slug}`)
           : route.path
       })
     },

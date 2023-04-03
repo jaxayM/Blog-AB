@@ -1,14 +1,14 @@
 <template>
     <nav>
-      <router-link to="/Blog-AB/home"> Home </router-link>
-      <router-link to="/Blog-AB/feed"> Feed </router-link>
+      <router-link to="/home"> Home </router-link>
+      <router-link to="/feed"> Feed </router-link>
       <span v-if="loggedIn">
         <button class="logout" @click="logOut">Logout</button>
         <button v-if="!verified" class="logout pop" @click="verify">Verify</button>
         <p v-else class="pop">Verified!</p>
       </span>
-      <router-link v-if="!loggedIn" to="/Blog-AB/register"> Register </router-link>
-      <router-link v-if="!loggedIn" to="/Blog-AB/login"> Login </router-link>
+      <router-link v-if="!loggedIn" to="/register"> Register </router-link>
+      <router-link v-if="!loggedIn" to="/login"> Login </router-link>
     </nav>
     <router-view />
 </template>
@@ -38,7 +38,7 @@ const verify = ()=>{
 }
 const logOut = ()=>{
   signOut(auth)
-  router.push('/Blog-AB/')
+  router.push('/')
 }
 
 </script>
