@@ -1,14 +1,14 @@
 <template>
     <nav>
-      <router-link to="/home"> Home </router-link>
-      <router-link to="/feed"> Feed </router-link>
+      <router-link to="/Blog-AB/home"> Home </router-link>
+      <router-link to="/Blog-AB/feed"> Feed </router-link>
       <span v-if="loggedIn">
         <button class="logout" @click="logOut">Logout</button>
         <button v-if="!verified" class="logout pop" @click="verify">Verify</button>
         <p v-else class="pop">Verified!</p>
       </span>
-      <router-link v-if="!loggedIn" to="/register"> Register </router-link>
-      <router-link v-if="!loggedIn" to="/login"> Login </router-link>
+      <router-link v-if="!loggedIn" to="/Blog-AB/register"> Register </router-link>
+      <router-link v-if="!loggedIn" to="/Blog-AB/login"> Login </router-link>
     </nav>
     <router-view />
 </template>
@@ -38,7 +38,7 @@ const verify = ()=>{
 }
 const logOut = ()=>{
   signOut(auth)
-  router.push('/')
+  router.push('/Blog-AB/')
 }
 
 </script>
@@ -56,8 +56,8 @@ const logOut = ()=>{
   nav {
     display: flex;
     height: 50px;
-    width: 100%;
-    position: fixed;
+    width: 95vw;
+    position: absolute;
     top: 0;
     padding: 10px;
   }
@@ -74,7 +74,7 @@ const logOut = ()=>{
   }
   .pop{
     color: rgb(90, 210, 90);
-    right: 0; 
-    position: fixed;
+    right: 10px; 
+    position: absolute;
   }
 </style>

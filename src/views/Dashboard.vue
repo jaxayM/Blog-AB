@@ -1,10 +1,10 @@
 <template>
-  <router-link :to="$store.state.currentEdit?'/edit-video':'/new-blog'"><button>Create</button></router-link>
+  <router-link :to="$store.state.currentEdit?'/Blog-AB/edit-video':'/Blog-AB/new-blog'"><button>Create</button></router-link>
   <h1>Blogs</h1>
   <div class="bloglist">
     <post v-for="post in filteredPosts">
       <template v-slot:title>{{post.title}}</template>
-      <template v-slot:description><router-link :to="`/view-post/${post.id?post.id:''}`"><button>View</button></router-link></template>
+      <template v-slot:description><router-link :to="`/Blog-AB/view-post/${post.id?post.id:''}`"><button>View</button></router-link></template>
     </post>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default{
       const router = useRouter()
       watchEffect(()=>{
         if(!loggedIn.value){
-          router.push('/login')
+          router.push('/Blog-AB/login')
         }
       })
       const store = useStore()

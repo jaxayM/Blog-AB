@@ -29,7 +29,7 @@
                     
                     if(!route.query.id){
                         router.push('/edit-video')
-                    } else router.push('/feed')
+                    } else router.push('/Blog-AB/feed')
                 } else validTitle.value = 'Title field required'
                 
             }

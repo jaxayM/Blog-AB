@@ -6,17 +6,31 @@ import Login from './views/Login.vue'
 import Dashboard from './views/Dashboard.vue'
 import Edit from './views/Edit.vue'
 import Preview from './views/Preview.vue'
+import Blogpost from './views/Blogpost.vue'
 
+const baseURL = '/Blog-AB'
 const routes = [
-    { path: "/", component: Home },
-    { path: "/feed", component: Dashboard, name: "feed"},
-    { path: "/home/", component: Home },
-    { path: "/login/", component: Login },
-    { path: "/register/", component: Register },
-    { path: "/new-blog", component: Create },
-    { path: "/edit-video", component: Edit, name: "edit" },
-    { path: "/view-post/", component: Preview },
-    { path: "/view-post/:id", component: Preview },
+    { path: `${baseURL}/`, component: Home },
+    { path: `${baseURL}/feed`, component: Dashboard, name: "feed"},
+    { path: `${baseURL}/home/`, component: Home },
+    { path: `${baseURL}/login/`, component: Login },
+    { path: `${baseURL}/register/`, component: Register },
+    { path: `${baseURL}/new-blog`, component: Create },
+    { path: `${baseURL}/edit-video`, component: Edit, name: "edit" },
+    { path: `${baseURL}/view-post/`, component: Preview },
+    { path: `${baseURL}/view-post/:id`, component: Preview },
+    {
+      path: `${baseURL}/:slug`,
+      name: 'blogpost',
+      component: Blogpost,
+      props: route => ({ id: parseInt( route.params.slug.split('-')[0] ) }),
+      beforeEnter: (to, from, next) => {
+        if (to.params.slug.includes(' ')){
+          const slug = to.params.slug.replace(' ', '-')
+          next({ name: to.name, params: { slug } })
+        } else next()
+      }
+    }
   ]
   
 export const router = createRouter({

@@ -3,7 +3,7 @@
     <p><input type="text" placeholder="Email" v-model="email" /></p>
     <p><input type="password" placeholder="Password" v-model="password" /></p>
     <p><button @click="signIn">Submit</button></p>
-    <p style="text-decoration: none">Don't have an account? <router-link to="/register">Sign up!</router-link></p>
+    <p style="text-decoration: none">Don't have an account? <router-link to="/Blog-AB/register">Sign up!</router-link></p>
     {{errMsg}}
   </template>
   <script setup>
@@ -19,7 +19,7 @@
         const auth = getAuth()
         signInWithEmailAndPassword(auth, email.value, password.value)
         .then((data) => {
-            router.push('/feed')
+            router.push('/Blog-AB/feed')
         })
         .catch((error) => {
             
