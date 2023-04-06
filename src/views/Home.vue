@@ -13,7 +13,7 @@
     </div>
     <main class="article">
         <h2>Discover</h2>
-        <div v-for="article in articles" class="articles">
+        <div v-for="article in blogs" class="articles">
             <h3>{{ article.attributes.Title }}</h3>
             <p> <span class="first-letter">{{ article.attributes.Description[0] }}</span> {{ article.attributes.Description.split('\n')[0] }}</p>
             <router-link class="link" :to="`/${article.id}-${article.attributes.Title.replace(/:|!|'|\?|,/g, '').replace(/\s+/g, '-').toLowerCase()}`" >View Blog Post</router-link>
@@ -25,7 +25,8 @@
 
 </template>
 <script>
-import axios from 'axios'
+// import axios from 'axios'
+import { mapGetters } from 'vuex'
 
 export default{
     data(){
@@ -33,20 +34,13 @@ export default{
             articles: []
         } 
     },
+    
+    computed: {
+    // add getter blog into computed with object spread operator
+    ...mapGetters(['blogs'])
+    },
     async created(){
-        // const token = '8c31553600534b74ceb84c4f8cb5e52ff2ebd689678ad8278bdc1a8d57d86b51b010d066e2eab9951ae091ad675614d88f8d425c4ad21918bf3d6b90eeabbf047be0ab933f1476b4ea842e57986cb96db83db5917dfbdf70f3da9c4838f1e179afad3f5bc121cc6bf49e9d87fbf0c90f569dd4f2d38d80544329b0e1f2b0f6f0'
-        const token = '1569d8f789d47354c5de458a9cf5378762efd38782dc89da6b3b73bcfd7436adef984256b00b7c9d4b0202e0121d9afb1973e3a3cf33f9d292be5b6264b1ba75ce4af18a9da312cd74e9904fbed013e58c7d03b6b85d11ffb44751b0176bdbc640d2edb7d30a0a48b3b5f71b7e670c0491a88a35d72db8be2ecea73e8d704150'
-        try {
-            const response = await axios.get('https://strapi-cp-blog.onrender.com/api/articles', {
-                headers: {
-                Authorization: `Bearer ${token}`
-                }
-            })
-            this.articles = response.data.data
-            console.log(response.data)
-        } catch (error) {
-            console.error(error)
-        }
+        await this.$store.dispatch('initialize')   
     }
 }
         

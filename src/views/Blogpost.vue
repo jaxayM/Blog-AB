@@ -7,6 +7,7 @@
 
 <script>
 import axios from 'axios'
+import { mapGetters } from 'vuex'
 
 export default {
   props: {
@@ -20,6 +21,13 @@ export default {
       post: {}
     }
   },
+    computed: {
+    // add getter blog into computed with object spread operator
+    ...mapGetters(['blogs'])
+    },
+    // async created(){
+    //     await this.$store.dispatch('initialize')   
+    // },
   watch: {
     '$route':{
         handler: (to, from) => {
@@ -30,6 +38,7 @@ export default {
     },
   async created() {
     try {
+      if (!this.blogs.length) {
         const token = '1569d8f789d47354c5de458a9cf5378762efd38782dc89da6b3b73bcfd7436adef984256b00b7c9d4b0202e0121d9afb1973e3a3cf33f9d292be5b6264b1ba75ce4af18a9da312cd74e9904fbed013e58c7d03b6b85d11ffb44751b0176bdbc640d2edb7d30a0a48b3b5f71b7e670c0491a88a35d72db8be2ecea73e8d704150'
         const response = await axios.get(`https://strapi-cp-blog.onrender.com/api/articles/${this.id}`, {
             headers: {
@@ -37,6 +46,9 @@ export default {
             }
         })
       this.post = response.data.data.attributes
+      } else {
+        this.post = this.blogs.filter(i=>i.id===this.id)[0].attributes
+      }
     } catch (error) {
       console.error(error)
     }

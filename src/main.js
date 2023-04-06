@@ -6,6 +6,7 @@ import {store} from './store'
 import {initializeApp} from "firebase/app"
 import {getFirestore} from "firebase/firestore"
 import { ViteSSG } from 'vite-ssg'
+// import { createApp } from 'vue'
 
 const firebaseConfig = {
   apiKey: "AIzaSyCqBTxOJHaPP-AH5PKJHShNyAm1S2RSHUY",
@@ -28,18 +29,21 @@ export const createApp = ViteSSG(
   // vue-router options
   { routes, base: "Blog-AB" },
   // function to have custom setups
-  ({ app, router, routes, isClient, initialState }) => {
+  async ({ app, router, routes, isClient, initialState }) => {
     app.use(store)
-    if (import.meta.env.SSR)
-      {initialState.store = store.state}
+    
+    if (import.meta.env.SSR) {
+      await store.dispatch('initialize')
+      initialState.store = store.state
+    }
     else
       {store.replaceState(initialState.store)}
-    router.beforeEach((to, from, next) => {
-      // perform the (user-implemented) store action to fill the store's state
-      if (!store.getters.ready)
-        {store.dispatch('initialize')}
-      next()
-    })
+    // router.beforeEach((to, from, next) => {
+    //   // perform the (user-implemented) store action to fill the store's state
+    //   if (!store.getters.ready)
+    //     {store.dispatch('initialize')}
+    //   next()
+    // })
   },
 )
 
