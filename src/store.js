@@ -30,7 +30,7 @@ export const store = createStore({
     async initialize(context){
       // populate blog with cms entries
       try {
-        const token = '1569d8f789d47354c5de458a9cf5378762efd38782dc89da6b3b73bcfd7436adef984256b00b7c9d4b0202e0121d9afb1973e3a3cf33f9d292be5b6264b1ba75ce4af18a9da312cd74e9904fbed013e58c7d03b6b85d11ffb44751b0176bdbc640d2edb7d30a0a48b3b5f71b7e670c0491a88a35d72db8be2ecea73e8d704150'
+        const token = '2c96b6128b15cfe1fdd2ffaf46c2cc99c2a2840ae32e7b140093a522603937b329c4e0fcab22bad4263f5e1d7687efaf002c84eb50bd0d4b1fabef1403704a94bd827a00533dbf4563c109c916933918489ae741d86a8357b046ba6b4f94af2de659a926d70a0029eacd559e98dcaed21717d94aaae8e1a5fb51daf98d8dd1fc'
         const response = await axios.get(`https://strapi-cp-blog.onrender.com/api/articles`, {
             headers: {
                 Authorization: `Bearer ${token}`
