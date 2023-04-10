@@ -59,7 +59,7 @@ export default {
 p{
   color: rgba(0, 0, 0, 0.84);
   text-rendering: optimizeLegibility;
-  margin: 20px 200px 200px 200px;
+  margin: 40px 10%;
   font-family: "Lora";
   font-size: 21px;
   letter-spacing: -0.03px;

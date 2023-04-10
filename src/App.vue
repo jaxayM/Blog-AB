@@ -56,7 +56,7 @@ const logOut = ()=>{
   nav {
     display: flex;
     height: 50px;
-    width: 95vw;
+    width: fit-content;
     position: absolute;
     top: 0;
     padding: 10px;

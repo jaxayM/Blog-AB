@@ -3,7 +3,7 @@
     <div class="meta">
         <div class="image"></div>
         <div class="info">
-            <h1 style="width: max-content">Create your Blogs freely </h1>
+            <h1 class="center">Create your Blogs freely </h1>
             <p>
                 <RouterLink class="center" to="/feed">
                     Start now creating your own blogs.
