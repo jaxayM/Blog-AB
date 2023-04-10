@@ -39,7 +39,7 @@ export default {
   async created() {
     try {
       if (!this.blogs.length) {
-        const token = '2c96b6128b15cfe1fdd2ffaf46c2cc99c2a2840ae32e7b140093a522603937b329c4e0fcab22bad4263f5e1d7687efaf002c84eb50bd0d4b1fabef1403704a94bd827a00533dbf4563c109c916933918489ae741d86a8357b046ba6b4f94af2de659a926d70a0029eacd559e98dcaed21717d94aaae8e1a5fb51daf98d8dd1fc'
+        const token = 'd59f01f4c841641e56a5062ee033015ba8da9d186803a662205d3229ad39f506f9af69ed480788bf825c6cad84108e4843c06002dc1bb341f90075eefdcd4c24636a5ad141fa409b7e59918722c2f8ee21a2134fd59863688911c4b9c2207b8a81159c6d78a8b2815bc82e4a5f0c742b0af52f6926933c4fd61a024ae6c9092b'
         const response = await axios.get(`https://strapi-cp-blog.onrender.com/api/articles/${this.id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
