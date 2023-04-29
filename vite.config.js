@@ -6,7 +6,8 @@ const myBlogSlugs = [
   '1-intermittent-fasting-weight-loss-in-a-week', 
   '2-discover-moroccos-culture-and-best-travel-destinations',
   '4-top-3-personel-finance-apps',
-
+  '3-start-saving-for-30s',
+  '6-top-20-saving-tips-for-beginners',
 ]
 export default defineConfig({
   plugins: [vue()],
