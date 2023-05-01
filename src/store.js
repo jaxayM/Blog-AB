@@ -31,7 +31,7 @@ export const store = createStore({
       // populate blog with cms entries
       try {
         const token = '2d6411a1af7c604a9f91e25913b16cda4a0eed3b796f065cfb65cdeedd4a13208c50a6c5a0efab809cadb3b529bde461188e69a6e74bacb52a6f21c3c6a6552136a19132e6c95475a3dcae61f36e818e732c301818b3737fc0dccfc345419d60736f2d02657996b313854ced2f726697d4b2cf137add42878cffa32ae3f1ee15'
-        const response = await axios.get(`https://strapi-cp-blog.onrender.com/api/articles`, {
+        const response = await axios.get(`https://strapi-cp-blog.onrender.com/api/articles?populate=*`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

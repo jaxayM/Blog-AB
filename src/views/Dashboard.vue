@@ -64,7 +64,7 @@ export default{
 
 <style>
 a{
-  float: right; 
+  /* float: right;  */
   position: static;
   display: block;
 }
