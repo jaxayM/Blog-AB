@@ -13,7 +13,7 @@
 
       <div class="section">
         <div class="container-small">
-          <div class="content"
+          <div class="mk"
             v-if="post.Content"
             v-html="HtmlContent">  
           </div>
@@ -84,7 +84,7 @@ export default {
 }
 </script>
 <style scoped>
-.content, p{
+.mk, p{
   color: rgba(0, 0, 0, 0.84);
   text-rendering: optimizeLegibility;
   margin: 40px 10%;
@@ -95,7 +95,7 @@ export default {
   white-space: pre-wrap;
   text-align: left;
 }
-#banner, .content > p > img {
+#banner, .mk > p > img {
   max-height: 600px;
   max-width: 100%;
   height: auto;
