@@ -5,6 +5,7 @@ import {routes} from './router'
 import {store} from './store'
 import {initializeApp} from "firebase/app"
 import {getFirestore} from "firebase/firestore"
+import VueGtag from 'vue-gtag'
 import { ViteSSG } from 'vite-ssg'
 // import { createApp } from 'vue'
 
@@ -30,6 +31,11 @@ export const createApp = ViteSSG(
   { routes, base: "Blog-AB" },
   // function to have custom setups
   async ({ app, router, routes, isClient, initialState }) => {
+    app.use(VueGtag,  {
+      config: { id: 'G-VH1V8GQK30'},
+      router,
+      enabled: true,
+    })
     app.use(store)
     
     if (import.meta.env.SSR) {
