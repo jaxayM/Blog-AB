@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /feed
+Disallow: /register
+Disallow: /login
+Disallow: /new-blog
+Disallow: /view-post
+Disallow: /edit-blog

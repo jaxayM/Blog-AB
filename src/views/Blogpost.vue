@@ -32,6 +32,7 @@ import { marked } from 'marked'
 import moment from "moment"
 import axios from 'axios'
 import { mapGetters } from 'vuex'
+import { useHead } from '@vueuse/head'
 
 export default {
   props: {
@@ -46,6 +47,17 @@ export default {
       post: {}
     }
   },
+  setup() {
+    useHead({
+      title: this.post.Title,
+      meta:[
+        { 
+          name: 'description',
+          content: this.post.Description
+        }
+      ]
+    })
+    },
     computed: {
     // add getter blog into computed with object spread operator
       ...mapGetters(['blogs']),
@@ -59,7 +71,7 @@ export default {
   watch: {
     '$route':{
         handler: (to, from) => {
-          document.title = to.meta.title || 'Blog AB'
+          document.title = to.meta.title || 'Jaxaym Blog | My Blog for personal finance education'
         },
          immediate: true
       }

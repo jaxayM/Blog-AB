@@ -27,12 +27,30 @@
 <script>
 // import axios from 'axios'
 import { mapGetters } from 'vuex'
+import { useHead } from '@vueuse/head'
 
 export default{
     data(){
         return {
             articles: []
         } 
+    },
+    setup(){
+      useHead({
+      title: 'Jaxaym Blog | My Blog page for everything finance and budgeting related',
+      meta:[
+        { 
+          name: 'description',
+          content: 'Learn how to manage your money, save for the future, and build wealth as a young adult with our free web blog about personal finance. Get tips and advice on budgeting, investing, and more. Start taking control of your financial future today!'
+        }
+      ],
+      link: [
+        {
+          rel: 'canonical',
+          href: 'https://jaxaym.github.io/Blog-AB' // process.env.BASE_URL.replace(/\/$/, '') // Remove trailing slash from base URL
+        }
+      ]
+    })
     },
     
     computed: {
