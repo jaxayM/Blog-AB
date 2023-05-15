@@ -47,7 +47,7 @@ export default{
       link: [
         {
           rel: 'canonical',
-          href: 'https://jaxaym.github.io/Blog-AB' // process.env.BASE_URL.replace(/\/$/, '') // Remove trailing slash from base URL
+          href: 'https://jaxaym.github.io/Blog-AB/' // process.env.BASE_URL.replace(/\/$/, '') // Remove trailing slash from base URL
         }
       ]
     })
